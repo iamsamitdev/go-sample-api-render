@@ -42,7 +42,7 @@ type application struct {
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host https://go-sample-api-render.onrender.com
+// @host go-sample-api-render.onrender.com
 // @BasePath /
 
 // @securityDefinitions.apikey BearerAuth

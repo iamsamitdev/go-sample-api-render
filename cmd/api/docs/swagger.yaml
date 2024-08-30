@@ -1,5 +1,5 @@
 basePath: /
-host: https://go-sample-api-render.onrender.com
+host: go-sample-api-render.onrender.com
 info:
   contact:
     email: support@swagger.io
