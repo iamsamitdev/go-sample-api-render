@@ -13,12 +13,18 @@ import (
 func (app *application) enableCORS(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
-		if origin == "http://localhost:5173" || origin == "https://go-sample-api-render.onrender.com" {
-			w.Header().Set("Access-Control-Allow-Origin", origin)
+		allowedOrigins := []string{"http://localhost:5173", "https://go-sample-api-render.onrender.com"}
+
+		// Check if the Origin header is in the list of allowed origins
+		for _, o := range allowedOrigins {
+			if origin == o {
+				w.Header().Set("Access-Control-Allow-Origin", origin)
+				break
+			}
 		}
 
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
-		w.Header().Set("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE,OPTIONS")
+		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type, X-CSRF-Token, Authorization")
 
 		if r.Method == "OPTIONS" {
